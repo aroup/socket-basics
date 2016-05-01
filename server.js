@@ -18,6 +18,7 @@ io.on('connection',function(socket){
 	});
 	//console.log(typeof (now.valueOf()));
 	socket.emit('message',{
+		name: 'System',
 		text: 'Welcome to chat application!',
 		timestamp: now.valueOf()
 	});
