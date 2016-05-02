@@ -4,8 +4,15 @@ var socket = io();
 
 console.log(name+ " joined in "+ room);
 
+var $roomTitle = jQuery('.room-title');
+$roomTitle.append('<p>'+ room +'</p>')
+
 socket.on('connect', function() {
 	console.log('connected to socket io server!');
+	socket.emit('joinRoom',{
+		name: name,
+		room: room
+	});
 });
 
 socket.on('message', function(message) {
@@ -21,6 +28,8 @@ socket.on('message', function(message) {
 /*
  handles submitting of new messages 
  */
+
+
 
 var $form = jQuery('#message-form');
 $form.on('submit', function(event) {
